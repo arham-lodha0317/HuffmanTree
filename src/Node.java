@@ -89,14 +89,28 @@ public class Node implements Comparable<Node>{
 
     @Override
     public String toString() {
-        return "Node{" +
-                "frequency=" + frequency +
-                ", character='" + character + '\'' +
-                ", left=" + left +
-                ", right=" + right +
-                '}';
+        return transversal(this);
     }
 
+    public String transversal(Node node){
+        if(node == null){
+            return "";
+        }
+        else if(node.character.equals("")){
+            return "null" + " " + transversal(node.getLeft()) + " " + transversal(node.getRight());
+        }
+//        else if(node.getLeft() == null && node.getRight() == null){
+//            return node.character;
+//        }
+//        else if(node.getLeft() == null){
+//            return node.character + " " + transversal(node.right);
+//        }
+//        else if(node.getRight() == null){
+//            return node.getCharacter() + " " + transversal(node.left);
+//        }
+
+        return node.getCharacter() + " " + transversal(node.getLeft()) + " " + transversal(node.getRight());
+    }
 }
 
 

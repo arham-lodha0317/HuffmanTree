@@ -1,13 +1,11 @@
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Driver {
 
     public static void main(String[] args) throws IOException {
 
-        Scanner scanner = new Scanner(new File("Text Files/A Tale of Two Cities.txt"));
+        Scanner scanner = new Scanner(new File("Text Files/War and Peace.txt"));
 
         HashMap<String, Integer> frequency = new HashMap<>();
 
@@ -64,7 +62,7 @@ public class Driver {
 
         scanner.close();
 
-        Scanner scanner2 = new Scanner(new File("Text Files/A Tale of Two Cities.txt"));
+        Scanner scanner2 = new Scanner(new File("Text Files/War and Peace.txt"));
 
         BitOutputStream outputStream = new BitOutputStream(new FileOutputStream(new File("Compressed Text/tale.binary")));
 
@@ -90,6 +88,7 @@ public class Driver {
 
 
         BitInputStream inputStream = new BitInputStream(new File("Compressed Text/tale.binary"));
+        BufferedWriter outputStream1 = new BufferedWriter(new FileWriter(new File("uncompressedWarandPeace.txt")));
         Node currentNode = tree;
 
         while (true){
@@ -102,7 +101,7 @@ public class Driver {
                         break;
                     }
 
-                    System.out.print(currentNode.getCharacter());
+                    outputStream1.write(currentNode.getCharacter());
                     currentNode = tree;
                 }
             }
@@ -113,12 +112,13 @@ public class Driver {
                         break;
                     }
 
-                    System.out.print(currentNode.getCharacter());
+                    outputStream1.write(currentNode.getCharacter());
                     currentNode = tree;
                 }
             }
 
         }
+
 
 
     }
