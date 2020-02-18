@@ -5,7 +5,7 @@ public class Driver {
 
     public static void main(String[] args) throws IOException {
 
-        Scanner scanner = new Scanner(new File("Text Files/War and Peace.txt"));
+        Scanner scanner = new Scanner(new File("Text Files/Tom Sawyer.txt"));
 
         HashMap<String, Integer> frequency = new HashMap<>();
 
@@ -62,7 +62,7 @@ public class Driver {
 
         scanner.close();
 
-        Scanner scanner2 = new Scanner(new File("Text Files/War and Peace.txt"));
+        Scanner scanner2 = new Scanner(new File("Text Files/Tom Sawyer.txt"));
 
         BitOutputStream outputStream = new BitOutputStream(new FileOutputStream(new File("Compressed Text/tale.binary")));
 
@@ -102,6 +102,7 @@ public class Driver {
                     }
 
                     outputStream1.write(currentNode.getCharacter());
+                    System.out.print(currentNode.getCharacter());
                     currentNode = tree;
                 }
             }
@@ -113,12 +114,15 @@ public class Driver {
                     }
 
                     outputStream1.write(currentNode.getCharacter());
+                    System.out.print(currentNode.getCharacter());
                     currentNode = tree;
                 }
             }
 
         }
 
+        outputStream1.flush();
+        outputStream1.close();
 
 
     }
